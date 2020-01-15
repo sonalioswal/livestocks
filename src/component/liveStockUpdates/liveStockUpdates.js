@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import StocksList from "../stockList/stockList";
 
-const url = "ws://stocks.mnet.website/";
+const url = "wss://stocks.mnet.website/";
 
 class LiveStockUpdates extends Component {
   state = {
