@@ -20,26 +20,35 @@ class LiveStockUpdates extends Component {
   saveLatestStockValues = event => {
     let stockData = JSON.parse(event.data);
     let [upValues, downValues] = [0, 0];
-
-    // time stored in histories should be consisitent across stocks(better for graphs)
     let currentTime = Date.now();
     let newStocks = this.state.stocks;
-    stockData.map(stock => {
-      if (this.state.stocks[stock[0]]) {
-        newStocks[stock[0]].currentValue > Number(stock[1])
+    stockData.forEach(stock => {
+      let stockObj = Object.assign({}, stock, {
+        stockName: stock[0],
+        stockValue: stock[1]
+      });
+      if (this.state.stocks[stockObj.stockName]) {
+        newStocks[stockObj.stockName].currentValue > Number(stockObj.stockValue)
           ? upValues++
           : downValues++;
 
-        newStocks[stock[0]].currentValue = Number(stock[1]);
-        newStocks[stock[0]].history.push({
+        newStocks[stockObj.stockName].currentValue = Number(
+          stockObj.stockValue
+        );
+        newStocks[stockObj.stockName].history.push({
           time: currentTime,
-          value: Number(stock[1])
+          value: Number(stockObj.stockValue)
         });
       } else {
-        newStocks[stock[0]] = {
-          currentValue: stock[1],
-          history: [{ time: Date.now(), value: Number(stock[1]) }],
-          isSelected: false
+        newStocks[stockObj.stockName] = {
+          currentValue: stockObj.stockValue,
+          history: [
+            {
+              time: Date.now(),
+              name: stockObj.stockName,
+              value: Number(stockObj.stockValue)
+            }
+          ]
         };
       }
     });
@@ -48,18 +57,11 @@ class LiveStockUpdates extends Component {
     });
   };
 
-  isLivestockLoaded = () => {
-    return Object.keys(this.state.stocks).length > 0;
-  };
-
   render() {
     return (
       <div>
         <div>
-          <StocksList
-            stocks={this.state.stocks}
-            isLivestockLoaded={this.isLivestockLoaded}
-          />
+          <StocksList stocks={this.state.stocks} />
         </div>
       </div>
     );
