@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3fe0225937a7c748416aeea3701f8628",
+    "revision": "5022a9355949f39f7953b5448625dd0d",
     "url": "/livestocks/index.html"
   },
   {
-    "revision": "1be2844f641b5efdc456",
-    "url": "/livestocks/static/css/main.0c04ad2d.chunk.css"
+    "revision": "fbaa15a742a8dc5619f1",
+    "url": "/livestocks/static/css/main.a5d94e5c.chunk.css"
   },
   {
     "revision": "a74a65c7b2f9aaf42928",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/livestocks/static/js/2.10ac5fab.chunk.js.LICENSE"
   },
   {
-    "revision": "1be2844f641b5efdc456",
-    "url": "/livestocks/static/js/main.a6391468.chunk.js"
+    "revision": "fbaa15a742a8dc5619f1",
+    "url": "/livestocks/static/js/main.116db93e.chunk.js"
   },
   {
     "revision": "d4810ef550de9f2455a6",
